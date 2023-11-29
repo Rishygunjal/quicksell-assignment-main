@@ -13,10 +13,13 @@ const DashView = () => {
   return (
     selectedData && (
       <div className="dashContainer" style={{ justifyContent: "space-evenly" }}>
-        {console.log(selectedData)}
         {selectedData.map((elem, index) => {
+          let imgbb = "https://source.unsplash.com/" + elem[index]?.imgg + "/";
+          imgbb = `https://source.unsplash.com/${elem[index]?.imgg}/`;
+          console.log(imgbb);
           return (
             <>
+              {console.log(selectedData)}
               <div key={index} className="dashCardContainer">
                 <div className="dashCardHeading flex-sb">
                   <div className="leftView">
@@ -38,10 +41,13 @@ const DashView = () => {
                               height: "100%",
                               borderRadius: "50%",
                             }}
-                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                            // src="https://source.unsplash.com/iFgRcqHznqg/"
+                            src={imgbb}
+                            // src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
                             alt="UserImage"
                           />
                         </div>
+                        {console.log(user)}
                       </>
                     )}
                     <span>
@@ -55,9 +61,14 @@ const DashView = () => {
                   </div>
                 </div>
                 <div className="dashList flex-gap-10">
-                  {elem[index]?.value?.map((elem, ind) => {
+                  {elem[index]?.value?.map((e, ind) => {
                     return (
-                      <Card id={elem.id} title={elem.title} tag={elem.tag} />
+                      <Card
+                        id={e.id}
+                        title={e.title}
+                        tag={e.tag}
+                        imgl={elem[index]?.imgg}
+                      />
                     );
                   })}
                 </div>
